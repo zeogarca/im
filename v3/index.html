@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
 <title>Iñaki Méndez — Nutriólogo & Entrenador Personal</title>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="description" content="Iñaki Méndez, nutriólogo y entrenador personal. Recomposición corporal y rendimiento con base científica.">
@@ -280,6 +281,114 @@
     .stat + .stat { padding-left: 0; border-left: none; border-top: 1px solid rgba(22,20,18,.15); }
     .nav .btn { padding: 10px 16px; }
   }
+
+  /* ─── Menú móvil y barra fija de contacto (se usan solo en celular) ─── */
+  .m-toggle, .m-menu, .m-cta, .swipe-hint { display: none; }
+
+  /* ═══ Diseño para celular ═══ */
+  @media (max-width: 760px) {
+    :root { --section: 56px; --gutter: 20px; }
+    body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+
+    .nav .container { height: 60px; }
+    .mono { font-size: 24px; }
+    .nav .container > .btn { display: none; }
+    .m-toggle {
+      display: flex; align-items: center; gap: 10px;
+      height: 44px; margin-right: -6px; padding: 0 6px;
+      background: none; border: 0; color: var(--ink); cursor: pointer;
+      font-family: var(--font); font-size: 14px; text-transform: uppercase; letter-spacing: .04em;
+    }
+    .m-toggle svg { width: 22px; height: 22px; }
+    .m-menu {
+      display: flex; flex-direction: column;
+      position: fixed; inset: 60px 0 0; z-index: 49;
+      background: var(--white);
+      padding: 8px var(--gutter) 24px;
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity .2s, transform .2s, visibility .2s;
+    }
+    .m-menu.open { opacity: 1; visibility: visible; transform: none; }
+    .m-menu a:not(.btn) {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 26px; font-weight: 700; text-transform: uppercase; letter-spacing: -.01em;
+      padding: 20px 0; border-bottom: 1px solid var(--sand);
+    }
+    .m-menu a:not(.btn)::after { content: '→'; font-weight: 400; color: var(--burgundy); }
+    .m-menu .btn { margin-top: auto; justify-content: center; height: 52px; }
+
+    .m-cta {
+      display: flex;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(247,246,243,.92); backdrop-filter: blur(12px);
+      border-top: 1px solid var(--sand);
+    }
+    .m-cta .btn { flex: 1; justify-content: center; height: 52px; font-size: 15px; }
+
+    .hero { min-height: calc(100svh - 60px - 76px); }
+    .hero .container { padding-top: 40px; padding-bottom: 32px; }
+    .hero .eyebrow { font-size: 15px; margin-bottom: 14px; }
+    .hero h1 { font-size: 44px; margin-bottom: 18px; }
+    .hero p { font-size: 17px; margin-bottom: 26px; }
+
+    .intro .container { gap: 18px; }
+    .intro p { font-size: 17px; line-height: 26px; }
+
+    .split-text h2 { font-size: 40px; }
+    .split-text p { font-size: 17px; line-height: 26px; margin-bottom: 32px; }
+    .fact strong { font-size: 36px; }
+
+    .pillars-head { margin-bottom: 24px; }
+    .pillar { padding: 28px 0; gap: 20px; }
+    .pillar-media { aspect-ratio: 16 / 11; }
+    .pillar-text h3 { font-size: 28px; margin-bottom: 10px; }
+    .pillar-text p { font-size: 17px; line-height: 26px; margin-bottom: 20px; }
+    .pillar-text .btn { width: 100%; justify-content: center; height: 48px; }
+
+    /* Cifras en una sola fila */
+    .stats, .stats { grid-template-columns: repeat(3, 1fr); margin-bottom: 32px; }
+    .stat, .stat + .stat { padding: 20px 8px 0 0; border-top: none; }
+    .stat + .stat { padding-left: 12px; border-left: 1px solid rgba(22,20,18,.15); }
+    .stat strong { font-size: 34px; margin-bottom: 6px; }
+    .stat span { font-size: 12px; line-height: 16px; display: block; }
+
+    /* Antes y después + testimonios: carruseles */
+    .cases, .reviews-grid {
+      display: grid; grid-auto-flow: column; grid-auto-columns: 84%;
+      grid-template-columns: none; gap: 12px;
+      max-width: none; margin: 0 calc(var(--gutter) * -1);
+      padding: 0 var(--gutter);
+      overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--gutter);
+      scrollbar-width: none;
+    }
+    .cases::-webkit-scrollbar, .reviews-grid::-webkit-scrollbar { display: none; }
+    .case, .review { scroll-snap-align: start; }
+    .swipe-hint { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
+
+    .results-head { margin-bottom: 28px; }
+    .results-head p { font-size: 17px; line-height: 26px; }
+    .reviews-head { margin-bottom: 28px; }
+    .review { padding: 24px; }
+    .review blockquote { font-size: 17px; line-height: 26px; }
+
+    .statement p { font-size: 28px; }
+
+    .steps-head { margin-bottom: 28px; }
+    .steps-head .btn { display: none; }
+    .steps { gap: 12px; }
+    .step { display: grid; grid-template-columns: 56px 1fr; padding: 22px 20px; }
+    .step-n { font-size: 36px; margin-bottom: 0; grid-row: span 2; }
+    .step h3 { font-size: 20px; margin-bottom: 4px; }
+
+    .creds { padding: 48px 0; }
+    .creds-row div { font-size: 16px; padding: 20px 12px; }
+
+    .final h2 { font-size: 44px; }
+    .final .btn { width: 100%; justify-content: center; height: 52px; }
+
+    .footer-cols { gap: 32px 40px; }
+  }
 </style>
 </head>
 <body>
@@ -294,8 +403,21 @@
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="https://wa.me/524431335957" target="_blank" rel="noopener" class="btn btn-dark">Agenda</a>
+    <button class="m-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span>Menú</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
   </div>
 </header>
+
+<nav class="m-menu" aria-label="Menú">
+  <a href="#metodo">Método</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#resultados">Resultados</a>
+  <a href="#como-funciona">Cómo funciona</a>
+  <a href="#contacto">Contacto</a>
+  <a href="https://wa.me/524431335957" target="_blank" rel="noopener" class="btn btn-dark">Agenda tu evaluación</a>
+</nav>
 
 <section class="hero">
   <div class="hero-img" role="img" aria-label="Iñaki Méndez en el gimnasio"></div>
@@ -431,6 +553,7 @@
         <figcaption class="case-body"><strong>−7% de grasa corporal</strong><span>Nombre del cliente · 12 semanas</span></figcaption>
       </figure>
     </div>
+    <span class="swipe-hint">Desliza para ver más resultados →</span>
   </div>
 </section>
 
@@ -492,6 +615,7 @@
         <figcaption><span class="avatar">EF</span><div><strong>Nombre Apellido</strong><span>Entrenamiento personal</span></div></figcaption>
       </figure>
     </div>
+    <span class="swipe-hint">Desliza para leer más →</span>
   </div>
 </section>
 
@@ -556,5 +680,24 @@
   </div>
 </footer>
 
+<div class="m-cta">
+  <a href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20empezar" target="_blank" rel="noopener" class="btn btn-dark">
+    Escríbeme por WhatsApp
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</div>
+
+<script>
+  const toggle = document.querySelector('.m-toggle');
+  const menu = document.querySelector('.m-menu');
+  const setMenu = open => {
+    menu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    toggle.querySelector('span').textContent = open ? 'Cerrar' : 'Menú';
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  toggle.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+</script>
 </body>
 </html>

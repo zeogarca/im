@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
 <title>Iñaki Méndez — Nutriólogo & Entrenador Personal</title>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="description" content="Iñaki Méndez, nutriólogo y entrenador personal. Recomposición corporal y rendimiento con base científica.">
@@ -314,12 +315,132 @@
     .nav .btn { padding: 10px 16px; }
     .creds .container { justify-content: flex-start; }
   }
+
+  /* ─── Menú móvil y barra fija de contacto (se usan solo en celular) ─── */
+  .m-toggle, .m-menu, .m-cta { display: none; }
+
+  /* ═══ Diseño para celular ═══ */
+  @media (max-width: 760px) {
+    :root { --xl: 64px; --lg: 32px; }
+    body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+
+    .banner { font-size: 13px; padding: 8px 16px; }
+    .banner-long { display: none; }
+    .banner a { margin-left: 0; }
+
+    .nav { position: sticky; top: 0; z-index: 40; }
+    .nav .container { height: 60px; }
+    .logo { font-size: 18px; }
+    .nav .container > .btn { display: none; }
+    .m-toggle {
+      display: grid; place-items: center;
+      width: 44px; height: 44px; margin-right: -10px;
+      background: none; border: 0; color: var(--secondary); cursor: pointer;
+    }
+    .m-toggle svg { width: 24px; height: 24px; }
+    .m-menu {
+      display: flex; flex-direction: column; gap: 4px;
+      position: fixed; inset: 0; z-index: 39;
+      background: var(--primary); color: var(--secondary);
+      padding: 100px var(--gutter) 24px;
+      transform: translateY(-8px); opacity: 0; visibility: hidden;
+      transition: opacity .2s, transform .2s, visibility .2s;
+    }
+    .m-menu.open { transform: none; opacity: 1; visibility: visible; }
+    .m-menu a:not(.btn) {
+      font-size: 32px; line-height: 1.2; font-weight: 700; letter-spacing: -.02em;
+      padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .m-menu .btn { margin-top: 24px; }
+
+    .m-cta {
+      display: flex; gap: 10px;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(0,0,0,.92); backdrop-filter: blur(12px);
+    }
+    .m-cta .btn { flex: 1; height: 52px; }
+
+    /* Hero: foto de fondo a pantalla completa */
+    .hero { padding: 0; }
+    .hero::before { display: none; }
+    .hero .container {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      min-height: calc(100svh - 96px - 76px);
+      padding-top: 24px; padding-bottom: 28px;
+    }
+    .hero-media { position: absolute; inset: 0; max-width: none; }
+    .hero-media img { height: 100%; aspect-ratio: auto; border-radius: 0; object-position: center 15%; }
+    .hero-media::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.05) 20%, rgba(0,0,0,.6) 55%, #000 92%);
+    }
+    .hero-chip { display: none; }
+    .hero-copy { position: relative; z-index: 1; }
+    .hero .caption { margin-bottom: 12px; }
+    .hero h1 { font-size: 44px; line-height: 1.05; margin-bottom: 16px; }
+    .hero-lead { font-size: 17px; line-height: 26px; margin-bottom: 24px; }
+    .hero-ctas { flex-wrap: nowrap; gap: 10px; }
+    .hero-ctas .btn { flex: 1 1 0; height: 52px; padding: 14px 16px; }
+
+    /* Credenciales: fila deslizable */
+    .creds .container {
+      flex-wrap: nowrap; overflow-x: auto; gap: 8px;
+      padding-top: 16px; padding-bottom: 16px;
+      scrollbar-width: none;
+    }
+    .creds .container::-webkit-scrollbar { display: none; }
+    .creds span {
+      flex-shrink: 0; white-space: nowrap;
+      border: 1px solid rgba(255,255,255,.2); border-radius: 9999px; padding: 6px 12px;
+      font-size: 13px;
+    }
+
+    .section-head { text-align: left; margin-bottom: 28px; }
+    .section-head p { font-size: 17px; line-height: 26px; }
+
+    /* Programas: carrusel horizontal */
+    .programs {
+      display: grid; grid-auto-flow: column; grid-auto-columns: 82%;
+      grid-template-columns: none;
+      gap: 12px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter) 4px;
+      scroll-padding: 0 var(--gutter);
+      scrollbar-width: none;
+    }
+    .programs::-webkit-scrollbar { display: none; }
+    .program { scroll-snap-align: start; }
+    .program-media { margin-bottom: 16px; }
+    .swipe-hint { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
+
+    .statement { padding: 72px 0; }
+
+    /* Pasos: compactos, número a la izquierda */
+    .steps { gap: 12px; }
+    .step { display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; padding: 20px; }
+    .step-num { margin-bottom: 0; grid-row: span 2; }
+    .step h3 { font-size: 20px; margin-bottom: 4px; }
+
+    .about-media .badge { width: 40%; right: 12px; bottom: 12px; border-width: 4px; }
+    .about p { font-size: 16px; line-height: 26px; }
+    .about .btn, .final .btn { width: 100%; }
+
+    .social { padding: 12px; }
+    .social img { width: 52px; height: 52px; }
+
+    .final h2 { font-size: 44px; }
+    .final p { font-size: 17px; line-height: 26px; }
+
+    .footer-grid { gap: 28px 16px; }
+  }
+  .swipe-hint { display: none; }
 </style>
 </head>
 <body>
 
 <div class="banner">
-  Asesoría nutricional y entrenamiento personal, presencial y en línea.
+  <span class="banner-long">Asesoría nutricional y entrenamiento personal, presencial y en línea.</span>
   <a href="https://wa.me/524431335957" target="_blank" rel="noopener">Agenda tu primera consulta →</a>
 </div>
 
@@ -333,12 +454,23 @@
       <li><a href="#redes">Contenido</a></li>
     </ul>
     <a href="https://wa.me/524431335957" target="_blank" rel="noopener" class="btn btn-primary">Agenda tu consulta</a>
+    <button class="m-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
 </header>
 
+<nav class="m-menu" aria-label="Menú">
+  <a href="#programas">Programas</a>
+  <a href="#como-funciona">Cómo funciona</a>
+  <a href="#sobre">Sobre mí</a>
+  <a href="#redes">Contenido</a>
+  <a href="https://wa.me/524431335957" target="_blank" rel="noopener" class="btn btn-primary">Agenda tu consulta</a>
+</nav>
+
 <section class="hero">
   <div class="container">
-    <div>
+    <div class="hero-copy">
       <div class="caption">Nutriólogo · Entrenador personal</div>
       <h1>Transforma tu cuerpo. <span>Eleva tu rendimiento.</span></h1>
       <p class="hero-lead">Recomposición corporal con base científica: un plan de nutrición y entrenamiento hecho para ti, con seguimiento real de tu progreso.</p>
@@ -402,6 +534,7 @@
         <a class="btn-link" href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%20integral" target="_blank" rel="noopener">Quiero este plan →</a>
       </article>
     </div>
+    <span class="swipe-hint">Desliza para ver los 4 programas →</span>
   </div>
 </section>
 
@@ -536,5 +669,20 @@
   </div>
 </footer>
 
+<div class="m-cta">
+  <a href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20empezar" target="_blank" rel="noopener" class="btn btn-primary">Escríbeme por WhatsApp</a>
+</div>
+
+<script>
+  const toggle = document.querySelector('.m-toggle');
+  const menu = document.querySelector('.m-menu');
+  const setMenu = open => {
+    menu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  toggle.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+</script>
 </body>
 </html>
