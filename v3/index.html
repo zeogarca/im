@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iñaki Méndez — Nutriólogo & Entrenador Personal</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="description" content="Iñaki Méndez, nutriólogo y entrenador personal. Recomposición corporal y rendimiento con base científica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,500;100,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #161412;
+    --paper: #F7F6F3;
+    --sand: #E6E4DC;
+    --sand-light: #EFEDE7;
+    --white: #FFFFFF;
+    --burgundy: #7C2629;
+    --red: #E4002B;
+    --muted: #5F5A55;
+
+    --font: 'Archivo', Arial, sans-serif;
+
+    --h1: clamp(44px, 6.6vw, 84px);
+    --h2: clamp(34px, 3.8vw, 48px);
+    --h3: clamp(28px, 3.2vw, 40.8px);
+
+    --container: 1280px;
+    --gutter: clamp(16px, 5vw, 64px);
+    --section: clamp(64px, 9vw, 120px);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    font-size: 16px; line-height: 24px;
+    color: var(--ink); background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .eyebrow { font-size: 14px; line-height: 20px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+  h1, h2, h3 { font-weight: 700; }
+  .accent { color: var(--red); }
+
+  /* ─── Botones: pill en mayúsculas ─── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 22px; border-radius: 100px;
+    font-size: 14px; line-height: 20px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: .02em;
+    white-space: nowrap;
+    transition: background .15s, color .15s, box-shadow .15s;
+  }
+  .btn svg { width: 16px; height: 16px; transition: transform .15s; }
+  .btn:hover svg { transform: translateX(3px); }
+  .btn-dark { background: var(--ink); color: var(--white); }
+  .btn-dark:hover { background: #33302c; }
+  .btn-light { background: var(--white); color: var(--ink); }
+  .btn-light:hover { background: var(--sand); }
+  .btn-outline { box-shadow: inset 0 0 0 1px currentColor; }
+  .btn-outline:hover { background: var(--ink); color: var(--white); box-shadow: inset 0 0 0 1px var(--ink); }
+
+  /* ─── Navegación ─── */
+  .nav { position: sticky; top: 0; z-index: 50; background: var(--white); border-bottom: 1px solid var(--sand); }
+  .nav .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 68px; }
+  .mono {
+    font-size: 30px; line-height: 1; font-weight: 400; font-stretch: 100%;
+    letter-spacing: .08em;
+    border: 2px solid var(--ink); border-radius: 6px; padding: 2px 6px 3px;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 14px; text-transform: uppercase; letter-spacing: .02em; }
+  .nav-links a:hover { color: var(--burgundy); }
+
+  /* ─── Hero ─── */
+  .hero {
+    position: relative; overflow: hidden;
+    background: var(--ink); color: var(--white);
+    min-height: min(88vh, 760px);
+    display: flex; align-items: center;
+  }
+  .hero-img {
+    position: absolute; top: 0; right: 0; bottom: 0; width: 62%;
+    background: url('../Captura%20de%20pantalla%202026-05-05%20224237.png') center 22% / cover no-repeat;
+    filter: grayscale(1) contrast(1.05) brightness(.85);
+  }
+  .hero-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, var(--ink) 0%, rgba(22,20,18,.6) 35%, rgba(22,20,18,.15) 100%);
+  }
+  .hero .container { position: relative; width: 100%; padding-top: 72px; padding-bottom: 72px; }
+  .hero .eyebrow { font-weight: 700; font-size: 18px; margin-bottom: 24px; }
+  .hero h1 { font-size: var(--h1); line-height: 1; letter-spacing: -.01em; max-width: 760px; margin-bottom: 28px; }
+  .hero p { font-size: clamp(18px, 1.8vw, 22px); line-height: 1.4; max-width: 420px; margin-bottom: 36px; }
+
+  /* ─── Texto de apertura ─── */
+  .intro { padding: var(--section) 0; }
+  .intro .container { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; }
+  .intro h2 { font-size: var(--h2); line-height: 1.15; letter-spacing: -.52px; }
+  .intro p { font-size: 18px; line-height: 28px; color: var(--muted); max-width: 520px; }
+
+  /* ─── Bloque burdeos ─── */
+  .split { background: var(--burgundy); color: var(--white); display: grid; grid-template-columns: 1fr 1fr; }
+  .split-text { padding: var(--section) var(--gutter); display: flex; flex-direction: column; justify-content: center; }
+  .split-text h2 { font-size: var(--h1); line-height: 1.02; letter-spacing: -.01em; margin-bottom: 28px; }
+  .split-text p { font-size: 18px; line-height: 28px; max-width: 480px; opacity: .9; margin-bottom: 44px; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 480px; }
+  .fact strong { display: block; font-size: clamp(40px, 4.4vw, 56px); line-height: 1; margin-bottom: 8px; }
+  .fact span { font-size: 14px; line-height: 20px; opacity: .85; }
+  .split-img { min-height: 420px; background: url('../Captura%20de%20pantalla%202026-05-05%20224302.png') center 30% / cover no-repeat; }
+
+  /* ─── Pilares (filas alternadas) ─── */
+  .pillars { background: var(--sand); padding: var(--section) 0; }
+  .pillars-head { margin-bottom: 56px; }
+  .pillars-head h2 { font-size: var(--h2); line-height: 1.15; letter-spacing: -.52px; }
+  .pillar {
+    display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px);
+    align-items: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(22,20,18,.12);
+  }
+  .pillar:nth-child(even) .pillar-media { order: 2; }
+  .pillar-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+  .pillar-media img { width: 100%; height: 100%; object-fit: cover; }
+  .rings {
+    position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .ring {
+    width: 84px; height: 84px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,.85);
+    background: rgba(22,20,18,.28);
+    backdrop-filter: blur(2px);
+    color: var(--white);
+    display: grid; place-items: center; text-align: center;
+    font-size: 11px; line-height: 14px; text-transform: uppercase; letter-spacing: .06em;
+  }
+  .crosshair { position: absolute; inset: 0; pointer-events: none; }
+  .crosshair::before, .crosshair::after { content: ''; position: absolute; background: rgba(255,255,255,.7); }
+  .crosshair::before { left: 50%; top: 22%; bottom: 22%; width: 1px; }
+  .crosshair::after { top: 50%; left: 36%; right: 36%; height: 1px; }
+  .crosshair span {
+    position: absolute; left: 50%; top: 50%; width: 46%; aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border: 1.5px solid rgba(255,255,255,.75); border-radius: 50%;
+  }
+  .pillar-text .eyebrow { color: var(--burgundy); margin-bottom: 14px; display: block; }
+  .pillar-text h3 { font-size: var(--h3); line-height: 1.2; letter-spacing: -.44px; margin-bottom: 18px; }
+  .pillar-text p { font-size: 18px; line-height: 28px; color: var(--muted); max-width: 440px; margin-bottom: 28px; }
+
+  /* ─── Declaración ─── */
+  .statement { background: var(--burgundy); color: var(--white); padding: var(--section) 0; }
+  .statement p {
+    font-size: clamp(28px, 3.4vw, 44px); line-height: 1.2; font-weight: 700; letter-spacing: -.4px;
+    max-width: 980px;
+  }
+  .statement .eyebrow { display: block; margin-top: 32px; opacity: .8; }
+
+  /* ─── Cómo funciona ─── */
+  .steps-wrap { background: var(--sand-light); padding: var(--section) 0; }
+  .steps-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 56px; }
+  .steps-head h2 { font-size: var(--h2); line-height: 1.1; letter-spacing: -.52px; text-transform: uppercase; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step { background: var(--white); padding: 32px; }
+  .step-n { font-size: 56px; line-height: 1; font-weight: 700; color: var(--burgundy); margin-bottom: 40px; display: block; }
+  .step h3 { font-size: 24px; line-height: 1.2; margin-bottom: 10px; }
+  .step p { color: var(--muted); }
+
+  /* ─── Credenciales ─── */
+  .creds { background: var(--white); padding: 72px 0; }
+  .creds h2 { font-size: 14px; line-height: 20px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); text-align: center; margin-bottom: 32px; }
+  .creds-row { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--sand); border-bottom: 1px solid var(--sand); }
+  .creds-row div { padding: 28px 16px; text-align: center; font-size: 18px; line-height: 24px; font-weight: 700; }
+  .creds-row div + div { border-left: 1px solid var(--sand); }
+
+  /* ─── CTA final ─── */
+  .final { background: var(--ink); color: var(--white); padding: var(--section) 0; }
+  .final .container { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: end; }
+  .final h2 { font-size: var(--h1); line-height: 1; letter-spacing: -.01em; text-transform: uppercase; }
+  .final p { font-size: 18px; line-height: 28px; opacity: .8; margin-bottom: 28px; }
+  .final .phone { display: block; margin-top: 18px; font-size: 14px; opacity: .6; }
+
+  /* ─── Footer ─── */
+  footer { background: var(--paper); padding: 56px 0 32px; }
+  .footer-top { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid var(--sand); }
+  .footer-cols { display: flex; gap: 64px; flex-wrap: wrap; }
+  .footer-cols h4 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 14px; }
+  .footer-cols ul { list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--muted); }
+  .footer-cols a:hover { color: var(--ink); }
+  .footer-bottom { padding-top: 24px; font-size: 12px; color: var(--muted); }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .hero-img { width: 100%; }
+    .hero-img::after { background: linear-gradient(0deg, var(--ink) 10%, rgba(22,20,18,.55) 60%, rgba(22,20,18,.3) 100%); }
+    .hero { align-items: flex-end; }
+    .intro .container, .split, .final .container { grid-template-columns: 1fr; }
+    .split-img { order: -1; aspect-ratio: 4 / 3; min-height: 0; }
+    .pillar { grid-template-columns: 1fr; gap: 24px; }
+    .pillar:nth-child(even) .pillar-media { order: 0; }
+    .steps { grid-template-columns: 1fr; }
+    .creds-row { grid-template-columns: 1fr 1fr; }
+    .creds-row div:nth-child(3) { border-left: none; }
+    .creds-row div:nth-child(-n+2) { border-bottom: 1px solid var(--sand); }
+  }
+  @media (max-width: 560px) {
+    .ring { width: 64px; height: 64px; font-size: 9px; line-height: 12px; }
+    .nav .btn { padding: 10px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container">
+    <a href="#" class="mono" aria-label="Iñaki Méndez">IM</a>
+    <ul class="nav-links">
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/524431335957" target="_blank" rel="noopener" class="btn btn-dark">Agenda</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-img" role="img" aria-label="Iñaki Méndez en el gimnasio"></div>
+  <div class="container">
+    <div class="eyebrow">Iñaki Méndez</div>
+    <h1>Nutrición y entrenamiento con precisión</h1>
+    <p>Recomposición corporal con base científica. Progreso medible. Resultados que se sostienen.</p>
+    <a href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20empezar" target="_blank" rel="noopener" class="btn btn-light">
+      Empieza tu proceso
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="container">
+    <h2>Un cuerpo más fuerte empieza con un plan hecho para ti.</h2>
+    <p>Soy nutriólogo y entrenador personal. Mido, planeo y doy seguimiento a cada cliente para que gane músculo, pierda grasa y mejore su rendimiento, sin dietas extremas.</p>
+  </div>
+</section>
+
+<section class="split" id="metodo">
+  <div class="split-text">
+    <h2><span class="accent">Ciencia aplicada,</span> adaptada a ti.</h2>
+    <p>Combino la nutrición con el entrenamiento de fuerza en un solo plan, ajustado a tu composición corporal, tus horarios y tus hábitos.</p>
+    <div class="facts">
+      <div class="fact"><strong>4</strong><span>Certificaciones profesionales en nutrición y entrenamiento</span></div>
+      <div class="fact"><strong>ISAK 1</strong><span>Antropometrista certificado para medir grasa y músculo</span></div>
+    </div>
+  </div>
+  <div class="split-img" role="img" aria-label="Iñaki con plicómetro y bata de nutrición"></div>
+</section>
+
+<section class="pillars" id="servicios">
+  <div class="container">
+    <div class="pillars-head">
+      <div class="eyebrow" style="color: var(--burgundy); margin-bottom: 12px;">Servicios</div>
+      <h2>Todo lo que necesitas para cambiar tu físico</h2>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-media">
+        <img src="../Captura%20de%20pantalla%202026-05-05%20224326.png" alt="Grupo de entrenamiento con Iñaki">
+        <div class="crosshair"><span></span></div>
+      </div>
+      <div class="pillar-text">
+        <span class="eyebrow">01 — Entrenamiento</span>
+        <h3>Entrenamiento de fuerza de precisión</h3>
+        <p>Programación de fuerza, hipertrofia y rendimiento con metodología WABBA Internacional, ajustada a tu nivel.</p>
+        <a href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20informaci%C3%B3n%20sobre%20entrenamiento%20personal" target="_blank" rel="noopener" class="btn btn-outline">Quiero entrenar</a>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-media">
+        <img src="../Captura%20de%20pantalla%202026-05-05%20224302.png" alt="Iñaki con plicómetro">
+        <div class="rings">
+          <div class="ring">Proteína</div>
+          <div class="ring">Grasas</div>
+          <div class="ring">Carbos</div>
+        </div>
+      </div>
+      <div class="pillar-text">
+        <span class="eyebrow">02 — Nutrición</span>
+        <h3>Nutrición hecha a tu medida</h3>
+        <p>Plan de alimentación calculado para tu cuerpo y tus objetivos, con principios que puedes mantener a largo plazo.</p>
+        <a href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20informaci%C3%B3n%20sobre%20asesor%C3%ADa%20nutricional" target="_blank" rel="noopener" class="btn btn-outline">Quiero mi plan</a>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-media">
+        <img src="../Captura%20de%20pantalla%202026-05-05%20224453.png" alt="Medición de pliegues con método ISAK">
+        <div class="crosshair"><span></span></div>
+      </div>
+      <div class="pillar-text">
+        <span class="eyebrow">03 — Evaluación</span>
+        <h3>Datos, no suposiciones</h3>
+        <p>Medición ISAK de tu composición corporal para saber exactamente de dónde partes y cómo avanzas.</p>
+        <a href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20informaci%C3%B3n%20sobre%20evaluaci%C3%B3n%20ISAK" target="_blank" rel="noopener" class="btn btn-outline">Quiero medirme</a>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-media">
+        <img src="../Captura%20de%20pantalla%202026-05-05%20224237.png" alt="Iñaki Méndez en el gimnasio" style="object-position: center 25%;">
+      </div>
+      <div class="pillar-text">
+        <span class="eyebrow">04 — Plan integral</span>
+        <h3>Acompañamiento completo</h3>
+        <p>Nutrición, entrenamiento y seguimiento en un solo programa. Un responsable de tu progreso, de principio a fin.</p>
+        <a href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%20integral" target="_blank" rel="noopener" class="btn btn-outline">Quiero el plan integral</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="statement">
+  <div class="container">
+    <p>Sin dietas extremas ni promesas vacías. Ciencia, constancia y un plan que sí puedes seguir.</p>
+    <span class="eyebrow">Mi enfoque</span>
+  </div>
+</section>
+
+<section class="steps-wrap" id="como-funciona">
+  <div class="container">
+    <div class="steps-head">
+      <h2>Cómo funciona</h2>
+      <a href="https://wa.me/524431335957" target="_blank" rel="noopener" class="btn btn-dark">
+        Agenda tu evaluación
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-n">01</span>
+        <h3>Evaluación</h3>
+        <p>Medimos tu composición corporal con método ISAK y platicamos de tus objetivos, horarios y hábitos.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">02</span>
+        <h3>Tu plan</h3>
+        <p>Recibes tu plan de alimentación y tu rutina de entrenamiento, hechos a tu medida.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">03</span>
+        <h3>Seguimiento</h3>
+        <p>Revisamos peso, medidas y fotos de progreso para ajustar el plan y que sigas avanzando.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="creds">
+  <div class="container">
+    <h2>Formación y certificaciones</h2>
+    <div class="creds-row">
+      <div>Licenciatura en Nutrición</div>
+      <div>ISAK Nivel 1</div>
+      <div>WABBA Internacional</div>
+      <div>Nutrición y Suplementación Fitness</div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contacto">
+  <div class="container">
+    <h2>¿Listo para empezar?</h2>
+    <div>
+      <p>Escríbeme y te cuento cómo trabajamos juntos para llegar a tu objetivo.</p>
+      <a href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20me%20interesa%20trabajar%20contigo.%20%C2%BFPodemos%20hablar?" target="_blank" rel="noopener" class="btn btn-light">
+        Escríbeme por WhatsApp
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <span class="phone">+52 443 133 5957</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <span class="mono">IM</span>
+      <div class="footer-cols">
+        <div>
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="#servicios">Entrenamiento</a></li>
+            <li><a href="#servicios">Nutrición</a></li>
+            <li><a href="#servicios">Evaluación ISAK</a></li>
+            <li><a href="#servicios">Plan integral</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Redes</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/inaki_mendez.coach/" target="_blank" rel="noopener">@inaki_mendez.coach</a></li>
+            <li><a href="https://www.instagram.com/nut_mendez/" target="_blank" rel="noopener">@nut_mendez</a></li>
+            <li><a href="https://www.tiktok.com/@inaki_mr126" target="_blank" rel="noopener">TikTok</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="https://wa.me/524431335957" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li>+52 443 133 5957</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Iñaki Méndez. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+</body>
+</html>
