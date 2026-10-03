@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iñaki Méndez — Nutriólogo & Entrenador Personal</title>
+<meta name="description" content="Iñaki Méndez, nutriólogo y entrenador personal. Recomposición corporal y rendimiento con base científica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #000000;
+    --secondary: #ffffff;
+    --accent: #3470CB;
+    --neutral: #F6F6F7;
+    --surface: #FFFFFF;
+    --on-surface: #000000;
+    --border: #E5E7EB;
+    --muted: #6B7280;
+    --banner: #FF4B00;
+
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    --display: clamp(44px, 6.4vw, 90px);
+    --h-lg: clamp(36px, 5.6vw, 62px);
+    --h-md: clamp(28px, 3.8vw, 42px);
+    --h-sm: clamp(22px, 2.4vw, 29px);
+
+    --xs: 8px;
+    --sm: 16px;
+    --md: 24px;
+    --lg: 40px;
+    --xl: clamp(80px, 11vw, 152px);
+
+    --r-md: 8px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+
+    --container: 1200px;
+    --gutter: clamp(16px, 4vw, 40px);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--on-surface);
+    background: var(--surface);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .caption {
+    font-size: 12px; line-height: 16px; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase;
+  }
+
+  /* ─── Botones ─── */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--xs);
+    height: 57px; padding: 16px 32px;
+    border-radius: 9999px;
+    font-size: 15.4px; line-height: 22px; font-weight: 500;
+    white-space: nowrap;
+    transition: transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--secondary); color: var(--on-surface); }
+  .btn-dark { background: var(--primary); color: var(--secondary); }
+  .btn-outline { background: transparent; color: var(--secondary); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.7); }
+  .btn-outline:hover { background: rgba(255,255,255,.1); }
+  .btn-link { color: var(--accent); font-size: 15.4px; font-weight: 500; display: inline-flex; gap: 6px; }
+  .btn-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ─── Banner de anuncio ─── */
+  .banner {
+    background: var(--banner); color: var(--secondary);
+    text-align: center; padding: 8px 16px;
+    font-size: 14px; line-height: 20px; font-weight: 500;
+  }
+  .banner a { text-decoration: underline; text-underline-offset: 2px; margin-left: 6px; }
+
+  /* ─── Navegación ─── */
+  .nav { background: var(--primary); color: var(--secondary); }
+  .nav .container {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--md);
+    height: 76px;
+  }
+  .logo { font-size: 20px; font-weight: 700; letter-spacing: -.02em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 32px; list-style: none; font-size: 15px; line-height: 20px; font-weight: 500; }
+  .nav-links a { opacity: .85; }
+  .nav-links a:hover { opacity: 1; }
+  .nav .btn { height: 44px; padding: 10px 22px; }
+
+  /* ─── Hero ─── */
+  .hero {
+    position: relative; overflow: hidden;
+    background: var(--primary); color: var(--secondary);
+    padding: var(--lg) 0 0;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 70% at 85% 30%, rgba(52,112,203,.55) 0%, transparent 70%),
+      radial-gradient(40% 50% at 10% 100%, rgba(255,75,0,.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero .container {
+    position: relative;
+    display: grid; grid-template-columns: 1.15fr .85fr; gap: var(--lg);
+    align-items: center;
+    padding-top: var(--lg); padding-bottom: var(--xl);
+  }
+  .hero .caption { color: rgba(255,255,255,.7); margin-bottom: var(--md); }
+  .hero h1 {
+    font-size: var(--display); line-height: 1.1; font-weight: 700;
+    letter-spacing: -.03em;
+    margin-bottom: var(--md);
+  }
+  .hero h1 span { color: #8fb4ec; }
+  .hero-lead { font-size: 20px; line-height: 30px; color: rgba(255,255,255,.82); max-width: 520px; margin-bottom: var(--lg); }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: var(--sm); }
+  .hero-media { position: relative; }
+  .hero-media img {
+    width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%;
+    border-radius: var(--r-xl);
+  }
+  .hero-chip {
+    position: absolute; left: -24px; bottom: 32px;
+    background: var(--secondary); color: var(--on-surface);
+    border-radius: var(--r-lg); padding: 14px 18px;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .hero-chip strong { font-size: 15.4px; line-height: 22px; font-weight: 600; }
+  .hero-chip span { font-size: 13px; line-height: 18px; color: var(--muted); }
+
+  /* Franja de credenciales */
+  .creds {
+    position: relative;
+    border-top: 1px solid rgba(255,255,255,.14);
+  }
+  .creds .container {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--sm) var(--lg);
+    padding-top: var(--md); padding-bottom: var(--md);
+  }
+  .creds span { font-size: 14px; line-height: 20px; font-weight: 500; color: rgba(255,255,255,.75); }
+
+  /* ─── Secciones ─── */
+  section.block { padding: var(--xl) 0; }
+  .section-head { text-align: center; max-width: 760px; margin: 0 auto var(--lg); }
+  .section-head .caption { color: var(--accent); margin-bottom: var(--sm); }
+  .section-head h2 {
+    font-size: var(--h-lg); line-height: 1.3; font-weight: 500;
+    letter-spacing: -.07em;
+    margin-bottom: var(--sm);
+  }
+  .section-head p { font-size: 20px; line-height: 30px; color: var(--muted); }
+
+  /* ─── Programas ─── */
+  .programs { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--md); }
+  .program {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: var(--sm);
+    display: flex; flex-direction: column;
+  }
+  .program-media {
+    aspect-ratio: 4 / 3; border-radius: var(--r-lg); overflow: hidden;
+    margin-bottom: var(--md); background: var(--neutral);
+  }
+  .program-media img { width: 100%; height: 100%; object-fit: cover; }
+  .program-media.solid {
+    background: var(--primary); color: var(--secondary);
+    display: flex; align-items: flex-end; padding: var(--md);
+    background-image: radial-gradient(80% 80% at 90% 10%, rgba(52,112,203,.6), transparent 70%);
+  }
+  .program-media.solid strong { font-size: 24px; line-height: 30px; font-weight: 700; letter-spacing: -.02em; }
+  .program .caption { color: var(--muted); margin-bottom: var(--xs); }
+  .program h3 { font-size: var(--h-sm); line-height: 1.2; font-weight: 500; letter-spacing: -.02em; margin-bottom: var(--xs); }
+  .program p { font-size: 15.4px; line-height: 22px; color: var(--muted); margin-bottom: var(--md); flex: 1; }
+
+  /* ─── Declaración ─── */
+  .statement {
+    position: relative; overflow: hidden;
+    color: var(--secondary);
+    padding: var(--xl) 0;
+    text-align: center;
+  }
+  .statement img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; filter: grayscale(.2);
+  }
+  .statement::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.72), rgba(0,0,0,.82));
+  }
+  .statement .container { position: relative; z-index: 1; max-width: 960px; }
+  .statement .caption { color: rgba(255,255,255,.7); margin-bottom: var(--md); }
+  .statement h2 { font-size: var(--h-md); line-height: 1.2; font-weight: 400; margin-bottom: var(--lg); }
+  .statement h2 strong { font-weight: 700; }
+
+  /* ─── Cómo funciona ─── */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--md); counter-reset: step; }
+  .step {
+    background: var(--neutral);
+    border-radius: var(--r-lg);
+    padding: var(--lg) var(--md);
+  }
+  .step-num {
+    width: 44px; height: 44px; border-radius: 9999px;
+    background: var(--primary); color: var(--secondary);
+    display: grid; place-items: center;
+    font-weight: 600; font-size: 15.4px;
+    margin-bottom: var(--md);
+  }
+  .step h3 { font-size: var(--h-sm); line-height: 1.2; font-weight: 500; letter-spacing: -.02em; margin-bottom: var(--xs); }
+  .step p { color: var(--muted); }
+
+  /* ─── Sobre mí ─── */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: var(--xl); align-items: center; }
+  .about-media { position: relative; }
+  .about-media img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-xl); }
+  .about-media .badge {
+    position: absolute; right: var(--md); bottom: var(--md);
+    width: 44%; aspect-ratio: 1; border-radius: var(--r-lg); overflow: hidden;
+    border: 6px solid var(--surface);
+  }
+  .about-media .badge img { border-radius: 0; height: 100%; }
+  .about .caption { color: var(--accent); margin-bottom: var(--sm); }
+  .about h2 { font-size: var(--h-lg); line-height: 1.3; font-weight: 500; letter-spacing: -.07em; margin-bottom: var(--md); }
+  .about p { font-size: 18px; line-height: 28px; color: var(--muted); margin-bottom: var(--sm); }
+  .about p strong { color: var(--on-surface); font-weight: 600; }
+  .tags { display: flex; flex-wrap: wrap; gap: var(--xs); margin: var(--md) 0 var(--lg); }
+  .tag {
+    background: var(--neutral); border: 1px solid var(--border);
+    border-radius: 9999px; padding: 8px 16px;
+    font-size: 14px; line-height: 20px; font-weight: 500;
+  }
+
+  /* ─── Redes ─── */
+  .socials { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--md); }
+  .social {
+    border: 1px solid var(--border); border-radius: var(--r-md);
+    padding: var(--sm);
+    display: flex; align-items: center; gap: var(--sm);
+    transition: border-color .15s;
+  }
+  .social:hover { border-color: var(--on-surface); }
+  .social img { width: 64px; height: 64px; border-radius: 9999px; object-fit: cover; flex-shrink: 0; }
+  .social div { flex: 1; min-width: 0; }
+  .social strong { display: block; font-weight: 600; font-size: 15.4px; line-height: 22px; }
+  .social span { font-size: 14px; line-height: 20px; color: var(--muted); }
+  .social .arrow { color: var(--accent); font-size: 20px; }
+
+  /* ─── CTA final ─── */
+  .final {
+    position: relative; overflow: hidden;
+    background: var(--primary); color: var(--secondary);
+    padding: var(--xl) 0;
+    text-align: center;
+  }
+  .final::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(50% 80% at 50% 120%, rgba(52,112,203,.7), transparent 70%);
+  }
+  .final .container { position: relative; }
+  .final h2 { font-size: var(--display); line-height: 1.1; font-weight: 700; letter-spacing: -.03em; margin-bottom: var(--md); }
+  .final p { font-size: 20px; line-height: 30px; color: rgba(255,255,255,.8); max-width: 600px; margin: 0 auto var(--lg); }
+  .final .hero-ctas { justify-content: center; }
+  .final small { display: block; margin-top: var(--md); color: rgba(255,255,255,.6); font-size: 14px; }
+
+  /* ─── Footer ─── */
+  footer { background: var(--primary); color: var(--secondary); border-top: 1px solid rgba(255,255,255,.12); }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: var(--lg);
+    padding: var(--lg) 0;
+  }
+  .footer-grid p { color: rgba(255,255,255,.6); font-size: 14px; line-height: 20px; margin-top: var(--xs); max-width: 280px; }
+  .footer-grid h4 { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: var(--sm); }
+  .footer-grid ul { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
+  .footer-grid a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.12);
+    padding: var(--md) 0;
+    font-size: 12px; color: rgba(255,255,255,.5);
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .programs { grid-template-columns: repeat(2, 1fr); }
+    .about { gap: var(--lg); }
+  }
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .hero .container { grid-template-columns: 1fr; }
+    .hero-media { max-width: 440px; }
+    .hero-chip { left: 16px; }
+    .steps, .socials { grid-template-columns: 1fr; }
+    .about { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .programs { grid-template-columns: 1fr; }
+    .hero-ctas .btn { flex: 1 1 100%; }
+    .nav .btn { padding: 10px 16px; }
+    .creds .container { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  Asesoría nutricional y entrenamiento personal, presencial y en línea.
+  <a href="https://wa.me/524431335957" target="_blank" rel="noopener">Agenda tu primera consulta →</a>
+</div>
+
+<header class="nav">
+  <div class="container">
+    <a href="#" class="logo">Iñaki Méndez</a>
+    <ul class="nav-links">
+      <li><a href="#programas">Programas</a></li>
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#sobre">Sobre mí</a></li>
+      <li><a href="#redes">Contenido</a></li>
+    </ul>
+    <a href="https://wa.me/524431335957" target="_blank" rel="noopener" class="btn btn-primary">Agenda tu consulta</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div>
+      <div class="caption">Nutriólogo · Entrenador personal</div>
+      <h1>Transforma tu cuerpo. <span>Eleva tu rendimiento.</span></h1>
+      <p class="hero-lead">Recomposición corporal con base científica: un plan de nutrición y entrenamiento hecho para ti, con seguimiento real de tu progreso.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20empezar" target="_blank" rel="noopener" class="btn btn-primary">Empieza hoy</a>
+        <a href="#programas" class="btn btn-outline">Ver programas</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="Captura%20de%20pantalla%202026-05-05%20224237.png" alt="Iñaki Méndez en el gimnasio">
+      <div class="hero-chip">
+        <strong>Lic. en Nutrición · ISAK 1</strong>
+        <span>Entrenador WABBA Internacional</span>
+      </div>
+    </div>
+  </div>
+  <div class="creds">
+    <div class="container">
+      <span>Licenciatura en Nutrición</span>
+      <span>Antropometrista ISAK Nivel 1</span>
+      <span>Entrenador WABBA Internacional</span>
+      <span>Nutrición y Suplementación aplicada al Fitness</span>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="programas">
+  <div class="container">
+    <div class="section-head">
+      <div class="caption">Programas</div>
+      <h2>Elige cómo quieres empezar</h2>
+      <p>Cada plan parte de tu composición corporal, tus objetivos y tu estilo de vida.</p>
+    </div>
+    <div class="programs">
+      <article class="program">
+        <div class="program-media"><img src="Captura%20de%20pantalla%202026-05-05%20224302.png" alt="Iñaki con plicómetro y bata de nutrición"></div>
+        <div class="caption">Nutrición</div>
+        <h3>Asesoría nutricional</h3>
+        <p>Plan de alimentación personalizado, enfocado en recomposición y rendimiento.</p>
+        <a class="btn-link" href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20informaci%C3%B3n%20sobre%20asesor%C3%ADa%20nutricional" target="_blank" rel="noopener">Quiero este plan →</a>
+      </article>
+      <article class="program">
+        <div class="program-media"><img src="Captura%20de%20pantalla%202026-05-05%20224326.png" alt="Grupo de entrenamiento con Iñaki"></div>
+        <div class="caption">Entrenamiento</div>
+        <h3>Entrenamiento personal</h3>
+        <p>Fuerza, hipertrofia y rendimiento con metodología WABBA Internacional.</p>
+        <a class="btn-link" href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20informaci%C3%B3n%20sobre%20entrenamiento%20personal" target="_blank" rel="noopener">Quiero este plan →</a>
+      </article>
+      <article class="program">
+        <div class="program-media"><img src="Captura%20de%20pantalla%202026-05-05%20224453.png" alt="Medición de pliegues cutáneos con método ISAK"></div>
+        <div class="caption">Composición corporal</div>
+        <h3>Evaluación ISAK</h3>
+        <p>Medición precisa de grasa y músculo. La base para personalizar tu plan.</p>
+        <a class="btn-link" href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20informaci%C3%B3n%20sobre%20evaluaci%C3%B3n%20ISAK" target="_blank" rel="noopener">Quiero este plan →</a>
+      </article>
+      <article class="program">
+        <div class="program-media solid"><strong>Nutrición +<br>Entrenamiento</strong></div>
+        <div class="caption">Más completo</div>
+        <h3>Plan integral</h3>
+        <p>Todo en un solo programa, con seguimiento continuo para acelerar tus resultados.</p>
+        <a class="btn-link" href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%20integral" target="_blank" rel="noopener">Quiero este plan →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="statement">
+  <img src="Captura%20de%20pantalla%202026-05-05%20224326.png" alt="">
+  <div class="container">
+    <div class="caption">Mi enfoque</div>
+    <h2>Sin dietas extremas ni promesas vacías. <strong>Ciencia, constancia y un plan que sí puedes seguir.</strong></h2>
+    <a href="https://wa.me/524431335957" target="_blank" rel="noopener" class="btn btn-primary">Hablemos de tu objetivo</a>
+  </div>
+</section>
+
+<section class="block" id="como-funciona">
+  <div class="container">
+    <div class="section-head">
+      <div class="caption">Cómo funciona</div>
+      <h2>Tres pasos, cero improvisación</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Evaluación</h3>
+        <p>Medimos tu composición corporal con método ISAK y platicamos de tus objetivos, horarios y hábitos.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Tu plan</h3>
+        <p>Recibes tu plan de alimentación y tu rutina de entrenamiento, hechos a tu medida.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Seguimiento</h3>
+        <p>Revisamos peso, medidas y fotos de progreso para ajustar el plan y que sigas avanzando.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="sobre" style="padding-top: 0;">
+  <div class="container about">
+    <div class="about-media">
+      <img src="Captura%20de%20pantalla%202026-05-05%20224302.png" alt="Iñaki Méndez, nutriólogo">
+      <div class="badge"><img src="Captura%20de%20pantalla%202026-05-05%20224252.png" alt="Certificados de Iñaki Méndez"></div>
+    </div>
+    <div>
+      <div class="caption">Sobre mí</div>
+      <h2>Soy Iñaki Méndez</h2>
+      <p>Nutriólogo certificado y entrenador personal. Mi enfoque es la <strong>recomposición corporal</strong>: ganar músculo y perder grasa al mismo tiempo, y mejorar tu <strong>rendimiento físico</strong>.</p>
+      <p>Combino la ciencia de la nutrición con el entrenamiento de fuerza para darte un plan que funciona y que puedes sostener.</p>
+      <div class="tags">
+        <span class="tag">Lic. Nutrición</span>
+        <span class="tag">ISAK Nivel 1</span>
+        <span class="tag">WABBA Internacional</span>
+        <span class="tag">Nutrición y Suplementación Fitness</span>
+      </div>
+      <a href="https://wa.me/524431335957" target="_blank" rel="noopener" class="btn btn-dark">Trabaja conmigo</a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="redes" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head">
+      <div class="caption">Contenido</div>
+      <h2>Sígueme</h2>
+      <p>Nutrición, entrenamiento y resultados reales.</p>
+    </div>
+    <div class="socials">
+      <a class="social" href="https://www.instagram.com/inaki_mendez.coach/" target="_blank" rel="noopener">
+        <img src="Captura%20de%20pantalla%202026-05-05%20224237.png" alt="">
+        <div><strong>@inaki_mendez.coach</strong><span>Instagram · Coaching</span></div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="social" href="https://www.instagram.com/nut_mendez/" target="_blank" rel="noopener">
+        <img src="Captura%20de%20pantalla%202026-05-05%20224302.png" alt="">
+        <div><strong>@nut_mendez</strong><span>Instagram · Nutrición</span></div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="social" href="https://www.tiktok.com/@inaki_mr126" target="_blank" rel="noopener">
+        <img src="Captura%20de%20pantalla%202026-05-05%20224326.png" alt="">
+        <div><strong>@inaki_mr126</strong><span>TikTok · Contenido fitness</span></div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contacto">
+  <div class="container">
+    <h2>Tu cambio empieza hoy.</h2>
+    <p>Escríbeme y te cuento cómo trabajamos juntos para llegar a tu objetivo.</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/524431335957?text=Hola%20I%C3%B1aki,%20me%20interesa%20trabajar%20contigo.%20%C2%BFPodemos%20hablar?" target="_blank" rel="noopener" class="btn btn-primary">Escríbeme por WhatsApp</a>
+    </div>
+    <small>+52 443 133 5957</small>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">Iñaki Méndez</div>
+        <p>Nutriólogo y entrenador personal. Recomposición corporal y rendimiento con base científica.</p>
+      </div>
+      <div>
+        <h4>Programas</h4>
+        <ul>
+          <li><a href="#programas">Asesoría nutricional</a></li>
+          <li><a href="#programas">Entrenamiento personal</a></li>
+          <li><a href="#programas">Evaluación ISAK</a></li>
+          <li><a href="#programas">Plan integral</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/inaki_mendez.coach/" target="_blank" rel="noopener">Instagram coaching</a></li>
+          <li><a href="https://www.instagram.com/nut_mendez/" target="_blank" rel="noopener">Instagram nutrición</a></li>
+          <li><a href="https://www.tiktok.com/@inaki_mr126" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/524431335957" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>+52 443 133 5957</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Iñaki Méndez. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+</body>
+</html>
