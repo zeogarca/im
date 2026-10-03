@@ -174,7 +174,7 @@
   .step p { color: var(--muted); }
 
   /* ─── Credenciales ─── */
-  .creds { background: var(--white); padding: 72px 0; }
+  .creds { background: var(--paper); padding: 72px 0; }
   .creds h2 { font-size: 14px; line-height: 20px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); text-align: center; margin-bottom: 32px; }
   .creds-row { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--sand); border-bottom: 1px solid var(--sand); }
   .creds-row div { padding: 28px 16px; text-align: center; font-size: 18px; line-height: 24px; font-weight: 700; }
@@ -186,6 +186,66 @@
   .final h2 { font-size: var(--h1); line-height: 1; letter-spacing: -.01em; text-transform: uppercase; }
   .final p { font-size: 18px; line-height: 28px; opacity: .8; margin-bottom: 28px; }
   .final .phone { display: block; margin-top: 18px; font-size: 14px; opacity: .6; }
+
+  /* ─── Marca de contenido de ejemplo ─── */
+  .demo {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px dashed currentColor; border-radius: 100px;
+    padding: 3px 10px;
+    font-size: 11px; line-height: 16px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: .06em;
+    opacity: .75;
+  }
+
+  /* ─── Resultados (antes y después) ─── */
+  .results { background: var(--sand-light); padding: var(--section) 0; }
+  .results-head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 48px; }
+  .results-head h2 { font-size: var(--h2); line-height: 1.1; letter-spacing: -.52px; text-transform: uppercase; }
+  .results-head p { font-size: 18px; line-height: 28px; color: var(--muted); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(22,20,18,.15); margin-bottom: 48px; }
+  .stat { padding: 28px 24px 28px 0; }
+  .stat + .stat { padding-left: 24px; border-left: 1px solid rgba(22,20,18,.15); }
+  .stat strong { display: block; font-size: clamp(44px, 5vw, 64px); line-height: 1; color: var(--burgundy); margin-bottom: 10px; }
+  .stat span { font-size: 14px; line-height: 20px; color: var(--muted); }
+  .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .case { background: var(--white); }
+  .case-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--white); }
+  .ph {
+    position: relative; aspect-ratio: 3 / 4;
+    display: grid; place-items: end center;
+    overflow: hidden;
+  }
+  .ph.before { background: linear-gradient(180deg, #c9c5bb, #a9a499); }
+  .ph.after { background: linear-gradient(180deg, #9b958a, #6f6a61); }
+  .ph svg { width: 78%; height: auto; color: rgba(255,255,255,.55); }
+  .ph.before svg { transform: scaleX(1.18); }
+  .ph-label {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--ink); color: var(--white);
+    font-size: 11px; line-height: 14px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+    padding: 4px 8px; border-radius: 100px;
+  }
+  .case-body { padding: 20px 22px 24px; }
+  .case-body strong { display: block; font-size: 24px; line-height: 1.2; margin-bottom: 4px; }
+  .case-body span { font-size: 14px; color: var(--muted); }
+
+  /* ─── Testimonios ─── */
+  .reviews { background: var(--white); padding: var(--section) 0; }
+  .reviews-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+  .reviews-head h2 { font-size: var(--h2); line-height: 1.1; letter-spacing: -.52px; }
+  .rating { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--muted); }
+  .stars { color: var(--burgundy); font-size: 20px; letter-spacing: 2px; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .review { background: var(--paper); padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+  .review blockquote { font-size: 18px; line-height: 28px; flex: 1; }
+  .review figcaption { display: flex; align-items: center; gap: 12px; }
+  .avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--burgundy); color: var(--white);
+    display: grid; place-items: center; font-weight: 700; font-size: 15px;
+  }
+  .review figcaption strong { display: block; font-size: 15px; line-height: 20px; }
+  .review figcaption div span { font-size: 13px; color: var(--muted); }
 
   /* ─── Footer ─── */
   footer { background: var(--paper); padding: 56px 0 32px; }
@@ -207,12 +267,17 @@
     .pillar { grid-template-columns: 1fr; gap: 24px; }
     .pillar:nth-child(even) .pillar-media { order: 0; }
     .steps { grid-template-columns: 1fr; }
+    .results-head { grid-template-columns: 1fr; gap: 20px; }
+    .reviews-grid { grid-template-columns: 1fr; }
     .creds-row { grid-template-columns: 1fr 1fr; }
     .creds-row div:nth-child(3) { border-left: none; }
     .creds-row div:nth-child(-n+2) { border-bottom: 1px solid var(--sand); }
   }
   @media (max-width: 560px) {
     .ring { width: 64px; height: 64px; font-size: 9px; line-height: 12px; }
+    .stats { grid-template-columns: 1fr; }
+    .cases { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .stat + .stat { padding-left: 0; border-left: none; border-top: 1px solid rgba(22,20,18,.15); }
     .nav .btn { padding: 10px 16px; }
   }
 </style>
@@ -328,6 +393,47 @@
   </div>
 </section>
 
+<section class="results" id="resultados">
+  <div class="container">
+    <div class="results-head">
+      <div>
+        <h2>Clientes reales.<br>Cambios que se sostienen.</h2>
+      </div>
+      <p>Cada resultado es el producto de un método medible: evaluación, plan a la medida y seguimiento constante.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>95%</strong><span>de los clientes alcanza su objetivo</span></div>
+      <div class="stat"><strong>12</strong><span>semanas en promedio para ver un cambio visible</span></div>
+      <div class="stat"><strong>+40</strong><span>personas acompañadas en su proceso</span></div>
+    </div>
+
+    <div class="cases">
+      <figure class="case">
+        <div class="case-imgs">
+          <div class="ph before"><span class="ph-label">Antes</span><svg viewBox="0 0 100 160" fill="currentColor" aria-hidden="true"><circle cx="50" cy="26" r="16"/><path d="M20 160V82c0-20 13-34 30-34s30 14 30 34v78z"/></svg></div>
+          <div class="ph after"><span class="ph-label">Después</span><svg viewBox="0 0 100 160" fill="currentColor" aria-hidden="true"><circle cx="50" cy="26" r="16"/><path d="M20 160V82c0-20 13-34 30-34s30 14 30 34v78z"/></svg></div>
+        </div>
+        <figcaption class="case-body"><strong>−9 kg de grasa</strong><span>Nombre del cliente · 16 semanas</span></figcaption>
+      </figure>
+      <figure class="case">
+        <div class="case-imgs">
+          <div class="ph before"><span class="ph-label">Antes</span><svg viewBox="0 0 100 160" fill="currentColor" aria-hidden="true"><circle cx="50" cy="26" r="16"/><path d="M20 160V82c0-20 13-34 30-34s30 14 30 34v78z"/></svg></div>
+          <div class="ph after"><span class="ph-label">Después</span><svg viewBox="0 0 100 160" fill="currentColor" aria-hidden="true"><circle cx="50" cy="26" r="16"/><path d="M20 160V82c0-20 13-34 30-34s30 14 30 34v78z"/></svg></div>
+        </div>
+        <figcaption class="case-body"><strong>+4 kg de músculo</strong><span>Nombre del cliente · 20 semanas</span></figcaption>
+      </figure>
+      <figure class="case">
+        <div class="case-imgs">
+          <div class="ph before"><span class="ph-label">Antes</span><svg viewBox="0 0 100 160" fill="currentColor" aria-hidden="true"><circle cx="50" cy="26" r="16"/><path d="M20 160V82c0-20 13-34 30-34s30 14 30 34v78z"/></svg></div>
+          <div class="ph after"><span class="ph-label">Después</span><svg viewBox="0 0 100 160" fill="currentColor" aria-hidden="true"><circle cx="50" cy="26" r="16"/><path d="M20 160V82c0-20 13-34 30-34s30 14 30 34v78z"/></svg></div>
+        </div>
+        <figcaption class="case-body"><strong>−7% de grasa corporal</strong><span>Nombre del cliente · 12 semanas</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section class="statement">
   <div class="container">
     <p>Sin dietas extremas ni promesas vacías. Ciencia, constancia y un plan que sí puedes seguir.</p>
@@ -360,6 +466,31 @@
         <h3>Seguimiento</h3>
         <p>Revisamos peso, medidas y fotos de progreso para ajustar el plan y que sigas avanzando.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="testimonios">
+  <div class="container">
+    <div class="reviews-head">
+      <div>
+        <h2>Lo que dicen mis clientes</h2>
+      </div>
+      <div class="rating"><span class="stars">★★★★★</span><span>5.0 · reseñas de Google</span></div>
+    </div>
+    <div class="reviews-grid">
+      <figure class="review">
+        <blockquote>“Por primera vez entendí qué comer y por qué. Bajé grasa sin dejar de comer rico y sin pasar hambre.”</blockquote>
+        <figcaption><span class="avatar">AB</span><div><strong>Nombre Apellido</strong><span>Asesoría nutricional</span></div></figcaption>
+      </figure>
+      <figure class="review">
+        <blockquote>“Las mediciones ISAK me cambiaron la forma de ver mi progreso. Ya no me guío solo por la báscula.”</blockquote>
+        <figcaption><span class="avatar">CD</span><div><strong>Nombre Apellido</strong><span>Plan integral</span></div></figcaption>
+      </figure>
+      <figure class="review">
+        <blockquote>“Las rutinas están pensadas para mí y para mi horario. En tres meses subí todas mis marcas de fuerza.”</blockquote>
+        <figcaption><span class="avatar">EF</span><div><strong>Nombre Apellido</strong><span>Entrenamiento personal</span></div></figcaption>
+      </figure>
     </div>
   </div>
 </section>
